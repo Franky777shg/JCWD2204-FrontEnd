@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #container {
+      /* background-color: salmon; */
+      width: 500px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 100px 150px 40px 200px 150px;
+      gap: 10px;
+    }
+    #container div {
+      background-color: lightblue;
+      /* border: 1px solid black; */
+    }
+    #container div:nth-child(8) {
+      background-color: white;
+    }
+
+    #div-1,
+    #div-2,
+    #div-9 {
+      grid-column: span 4;
+    }
+
+    #div-7,
+    #div-8 {
+      grid-column: span 2;
+    }
+    #div-8 {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <div id="div-1">1</div>
+      <div id="div-2">2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div id="div-7">7</div>
+      <div id="div-8">
+        <div>8.1</div>
+        <div>8.2</div>
+      </div>
+      <div id="div-9">9</div>
+    </div>
+  </body>
+</html>
