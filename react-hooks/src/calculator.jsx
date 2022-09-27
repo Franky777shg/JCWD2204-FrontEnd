@@ -1,41 +1,50 @@
-import React from "react";
+import { useState } from "react";
 
 export default function Calculator() {
+  const [num1, setNum1] = useState();
+  const [num2, setNum2] = useState();
+
+  const handleOnChange = (e) => {
+    if (e.target.name === "num1") {
+      setNum1(+e.target.value);
+    } else {
+      setNum2(+e.target.value);
+    }
+  };
+
   const increment = () => {
-    let num1 = +document.getElementById("number1").value;
-    let num2 = +document.getElementById("number2").value;
     document.getElementById("result").textContent = num1 + num2;
   };
   const decrement = () => {
-    let num1 = +document.getElementById("number1").value;
-    let num2 = +document.getElementById("number2").value;
     document.getElementById("result").textContent = num1 - num2;
   };
   const multiplication = () => {
-    let num1 = +document.getElementById("number1").value;
-    let num2 = +document.getElementById("number2").value;
     document.getElementById("result").textContent = num1 * num2;
   };
   const division = () => {
-    let num1 = +document.getElementById("number1").value;
-    let num2 = +document.getElementById("number2").value;
     document.getElementById("result").textContent = num1 / num2;
   };
   const modulo = () => {
-    let num1 = +document.getElementById("number1").value;
-    let num2 = +document.getElementById("number2").value;
     document.getElementById("result").textContent = num1 % num2;
   };
   const square = () => {
-    let num1 = +document.getElementById("number1").value;
-    let num2 = +document.getElementById("number2").value;
     document.getElementById("result").textContent = num1 ** num2;
   };
 
   return (
     <div>
-      <input type="number" id="number1" />
-      <input type="number" id="number2" />
+      <input
+        type="number"
+        id="number1"
+        name="num1"
+        onChange={(e) => handleOnChange(e)}
+      />
+      <input
+        type="number"
+        id="number2"
+        name="num2"
+        onChange={(e) => handleOnChange(e)}
+      />
       <button onClick={increment}>Increment +</button>
       <button onClick={decrement}>Decrement -</button>
       <button onClick={multiplication}>Multiplication *</button>
