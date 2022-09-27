@@ -12,23 +12,22 @@ export default function Calculator() {
     }
   };
 
-  const increment = () => {
-    document.getElementById("result").textContent = num1 + num2;
-  };
-  const decrement = () => {
-    document.getElementById("result").textContent = num1 - num2;
-  };
-  const multiplication = () => {
-    document.getElementById("result").textContent = num1 * num2;
-  };
-  const division = () => {
-    document.getElementById("result").textContent = num1 / num2;
-  };
-  const modulo = () => {
-    document.getElementById("result").textContent = num1 % num2;
-  };
-  const square = () => {
-    document.getElementById("result").textContent = num1 ** num2;
+  let result = document.getElementById("result");
+
+  const operation = (sign) => {
+    if (sign === "+") {
+      result.textContent = `${num1} ${sign} ${num2} = ${num1 + num2}`;
+    } else if (sign === "-") {
+      result.textContent = `${num1} ${sign} ${num2} = ${num1 - num2}`;
+    } else if (sign === "*") {
+      result.textContent = `${num1} ${sign} ${num2} = ${num1 * num2}`;
+    } else if (sign === "/") {
+      result.textContent = `${num1} ${sign} ${num2} = ${num1 / num2}`;
+    } else if (sign === "%") {
+      result.textContent = `${num1} ${sign} ${num2} = ${num1 % num2}`;
+    } else {
+      result.textContent = `${num1} ${sign} ${num2} = ${num1 ** num2}`;
+    }
   };
 
   return (
@@ -45,12 +44,12 @@ export default function Calculator() {
         name="num2"
         onChange={(e) => handleOnChange(e)}
       />
-      <button onClick={increment}>Increment +</button>
-      <button onClick={decrement}>Decrement -</button>
-      <button onClick={multiplication}>Multiplication *</button>
-      <button onClick={division}>Division /</button>
-      <button onClick={modulo}>Modulo %</button>
-      <button onClick={square}>Square ^</button>
+      <button onClick={() => operation("+")}>Increment +</button>
+      <button onClick={() => operation("-")}>Decrement -</button>
+      <button onClick={() => operation("*")}>Multiplication *</button>
+      <button onClick={() => operation("/")}>Division /</button>
+      <button onClick={() => operation("%")}>Modulo %</button>
+      <button onClick={() => operation("^")}>Square ^</button>
       <h1 id="result">Result here</h1>
     </div>
   );
