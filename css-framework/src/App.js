@@ -7,7 +7,14 @@ function App() {
 
   const renderToDo = () => {
     return lists.map((item, index) => {
-      return <ToDo data={item} onDelete={onDelete} indexToDelete={index} />;
+      return (
+        <ToDo
+          data={item}
+          onDelete={onDelete}
+          indexData={index}
+          onEdit={onEdit}
+        />
+      );
     });
   };
 
@@ -19,6 +26,15 @@ function App() {
   const onDelete = (index) => {
     let temp = [...lists];
     temp.splice(index, 1);
+    setLists(temp);
+  };
+
+  const onEdit = (index) => {
+    // console.log(index);
+    let inputFromUser = prompt("Mau ganti apa?");
+    console.log(inputFromUser);
+    let temp = [...lists];
+    temp.splice(index, 1, inputFromUser);
     setLists(temp);
   };
 
