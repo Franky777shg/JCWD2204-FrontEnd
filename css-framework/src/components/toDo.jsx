@@ -1,6 +1,6 @@
 import { Box, Text, Button } from "@chakra-ui/react";
 
-export default function ToDo({ data }) {
+export default function ToDo({ data, onDelete, indexToDelete }) {
   return (
     <Box
       bgColor="salmon"
@@ -12,7 +12,9 @@ export default function ToDo({ data }) {
       justifyContent="space-evenly"
     >
       <Text fontSize="2rem">{data}</Text>
-      <Button colorScheme="teal">❌</Button>
+      <Button onClick={() => onDelete(indexToDelete)} colorScheme="teal">
+        ❌
+      </Button>
     </Box>
   );
 }

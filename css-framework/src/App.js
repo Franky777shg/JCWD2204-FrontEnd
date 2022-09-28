@@ -3,21 +3,23 @@ import { Button, Heading, Center, Input, Flex, Stack } from "@chakra-ui/react";
 import ToDo from "./components/toDo";
 
 function App() {
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(["Coding", "Eat", "Drink"]);
 
   const renderToDo = () => {
-    return lists.map((item) => {
-      return <ToDo data={item} />;
+    return lists.map((item, index) => {
+      return <ToDo data={item} onDelete={onDelete} indexToDelete={index} />;
     });
   };
 
   const onAdd = () => {
     let newData = document.getElementById("newToDo").value;
-    // console.log(newData);
-    // let temp = [...lists];
-    // temp.push(newData);
-    // setLists(temp);
     setLists([...lists, newData]);
+  };
+
+  const onDelete = (index) => {
+    let temp = [...lists];
+    temp.splice(index, 1);
+    setLists(temp);
   };
 
   return (
