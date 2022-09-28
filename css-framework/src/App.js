@@ -32,10 +32,15 @@ function App() {
   const onEdit = (index) => {
     // console.log(index);
     let inputFromUser = prompt("Mau ganti apa?");
-    console.log(inputFromUser);
-    let temp = [...lists];
-    temp.splice(index, 1, inputFromUser);
-    setLists(temp);
+
+    if (inputFromUser) {
+      let temp = [...lists];
+      temp.splice(index, 1, inputFromUser);
+      setLists(temp);
+    } else {
+      alert("Isi yang bener dong!");
+    }
+    // console.log(inputFromUser);
   };
 
   return (
