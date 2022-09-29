@@ -26,9 +26,6 @@ export default function Filtering() {
   const ListItem = ({ data }) => {
     return (
       <Box
-        // border={3}
-        // borderColor="teal"
-        // borderStyle="solid"
         bg="teal"
         maxWidth="100%"
         h="40px"
@@ -40,6 +37,14 @@ export default function Filtering() {
       >
         <Text>{data}</Text>
       </Box>
+    );
+  };
+
+  const MsgError = () => {
+    return (
+      <Text textAlign="center" fontSize="1.4rem" color="red">
+        Data tidak ditemukan... 🍃
+      </Text>
     );
   };
 
@@ -78,7 +83,7 @@ export default function Filtering() {
             onChange={(e) => handleSearch(e)}
           />
         </InputGroup>
-        {showListItem()}
+        {filtered.length === 0 ? <MsgError /> : showListItem()}
       </Box>
     </Center>
   );
