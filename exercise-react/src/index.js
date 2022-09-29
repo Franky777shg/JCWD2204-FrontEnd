@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./stopwatch";
+import Stopwatch from "./stopwatch";
+import Filtering from "./filtering";
 import { ChakraProvider } from "@chakra-ui/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider>
-    <App />
+    <Filtering />
   </ChakraProvider>
 );
