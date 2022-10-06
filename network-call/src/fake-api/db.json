@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Budi",
+      "age": 35
+    },
+    {
+      "name": "Nana",
+      "id": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 0,
+      "product-name": "Shirt"
+    },
+    {
+      "id": 1,
+      "product-name": "Shoes"
+    }
+  ]
+}
