@@ -2,11 +2,17 @@ import { useState } from "react";
 import { Button, Heading, Center, Input, Flex, Stack } from "@chakra-ui/react";
 import ToDo from "./components/toDo";
 
+// setup redux
+import { useSelector, useDispatch } from "react-redux";
+import { addNew, remove, edit } from "./redux/toDoSlice";
+
 function App() {
-  const [lists, setLists] = useState(["Coding", "Eat", "Drink"]);
+  // const [lists, setLists] = useState(["Coding", "Eat", "Drink"]);
+  const { value, count } = useSelector((state) => state.toDoSlice);
+  const dispatch = useDispatch();
 
   const renderToDo = () => {
-    return lists.map((item, index) => {
+    return value.map((item, index) => {
       return (
         <ToDo
           data={item}
@@ -20,27 +26,26 @@ function App() {
 
   const onAdd = () => {
     let newData = document.getElementById("newToDo").value;
-    setLists([...lists, newData]);
+    dispatch(addNew(newData));
   };
 
   const onDelete = (index) => {
-    let temp = [...lists];
-    temp.splice(index, 1);
-    setLists(temp);
+    dispatch(remove(index));
   };
 
   const onEdit = (index) => {
-    // console.log(index);
     let inputFromUser = prompt("Mau ganti apa?");
 
     if (inputFromUser) {
-      let temp = [...lists];
-      temp.splice(index, 1, inputFromUser);
-      setLists(temp);
+      dispatch(
+        edit({
+          inputFromUser,
+          index,
+        })
+      );
     } else {
       alert("Isi yang bener dong!");
     }
-    // console.log(inputFromUser);
   };
 
   return (
@@ -48,6 +53,7 @@ function App() {
       <Heading textAlign="center" mb={5}>
         To Do List App
       </Heading>
+      <Heading>Total: {count}</Heading>
       <Input placeholder="Add New To Do List" id="newToDo" />
       <Button onClick={onAdd} colorScheme="teal">
         Add
