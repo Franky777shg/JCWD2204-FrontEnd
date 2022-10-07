@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Andika",
+      "email": "andika@yahoo.com",
+      "password": "Asd123!"
+    },
+    {
+      "id": 1,
+      "name": "Judika",
+      "email": "judika@yahoo.com",
+      "password": "Asd123!"
+    },
+    {
+      "name": "Jubaedah",
+      "email": "jubaedah@gmail.com",
+      "password": "Asd123!",
+      "id": 2
+    },
+    {
+      "name": "Jubaedah2",
+      "email": "jubaedah2@gmail.com",
+      "password": "Asd123!",
+      "id": 3
+    },
+    {
+      "name": "Raihan",
+      "email": "raihan@gmail.com",
+      "password": "Asd123!",
+      "id": 4
+    },
+    {
+      "name": "devoooo",
+      "email": "devo@gmail.com",
+      "password": "Asd123!",
+      "id": 5
+    },
+    {
+      "name": "devoooo",
+      "email": "devo@gmail.com",
+      "password": "Asd123!",
+      "id": 6
+    },
+    {
+      "name": "devoooo",
+      "email": "devo@gmail.com",
+      "password": "Asd123!",
+      "id": 7
+    },
+    {
+      "name": "Zaballllll",
+      "email": "zabal@gmail.co.id",
+      "password": "Asd123!",
+      "id": 8
+    },
+    {
+      "name": "Edoooooo",
+      "email": "edo@rocket.mail",
+      "password": "Asd123!",
+      "id": 9
+    }
+  ]
+}
