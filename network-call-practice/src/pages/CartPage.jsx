@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { syncData } from "../redux/cartSlice";
-import { Image } from "react-bootstrap";
+import { Image, Button } from "react-bootstrap";
 
 export const CartPage = () => {
   const dispatch = useDispatch();
@@ -46,6 +46,7 @@ export const CartPage = () => {
         {data.map((item, index) => {
           return (
             <div
+              key={index}
               className="d-grid mb-3 border rounded"
               style={{
                 width: "85%",
@@ -77,7 +78,38 @@ export const CartPage = () => {
           );
         })}
       </div>
-      <div style={{ width: "30vw", backgroundColor: "lightblue" }}>2</div>
+      <div className="p-5" style={{ width: "30vw" }}>
+        <div
+          className="rounded border"
+          style={{
+            width: "70%",
+            height: "220px",
+            padding: "10px",
+            boxShadow: "7px 5px #888888",
+          }}
+        >
+          <p style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+            Ringkasan Belanja
+          </p>
+          <p>
+            Total Barang ={" "}
+            {data.map((item) => item.qty).reduce((a, b) => a + b)} Barang
+          </p>
+          <p>
+            Total Harga = IDR{" "}
+            {data
+              .map((item) => item.qty * item.price)
+              .reduce((a, b) => a + b)
+              .toLocaleString()}
+          </p>
+          <Button
+            style={{ backgroundColor: "#03ac0e", border: "none" }}
+            className="w-100"
+          >
+            Checkout
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
