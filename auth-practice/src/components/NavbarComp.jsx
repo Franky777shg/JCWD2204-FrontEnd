@@ -1,8 +1,12 @@
 import React from "react";
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 export const NavbarComp = () => {
+  const { username } = useSelector((state) => state.userSlice.value);
+
   return (
     <Flex
       as="header"
@@ -14,11 +18,10 @@ export const NavbarComp = () => {
     >
       <FaTwitter style={{ width: "50px", height: "50px" }} />
       <Heading>Authentication</Heading>
-      <Box>
-        <Link to="/login" style={{ marginRight: "10px" }}>
-          Login
-        </Link>
+      <Box bg="white" w="200px" display="flex" justifyContent="space-around">
+        <Link to="/login">Login</Link>
         <Link to="register">Register</Link>
+        <Text>{username}</Text>
       </Box>
     </Flex>
   );
