@@ -1,11 +1,17 @@
 import React from "react";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
 import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/userSlice";
 
 export const NavbarComp = () => {
   const { username } = useSelector((state) => state.userSlice.value);
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <Flex
@@ -23,6 +29,7 @@ export const NavbarComp = () => {
         <Link to="register">Register</Link>
         <Text>{username}</Text>
       </Box>
+      <Button onClick={onLogout}>Logout</Button>
     </Flex>
   );
 };
