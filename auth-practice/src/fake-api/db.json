@@ -11,6 +11,24 @@
       "username": "Andi",
       "email": "andi@gmail.com",
       "id": 1
+    },
+    {
+      "password": "12345678",
+      "username": "Lala",
+      "email": "lala@gmail.com",
+      "id": 2
+    },
+    {
+      "password": "12345678",
+      "username": "Ilham",
+      "email": "ilham@gmail.com",
+      "id": 3
+    },
+    {
+      "password": "12345678",
+      "username": "Edo",
+      "email": "edo@gmail.com",
+      "id": 4
     }
   ]
 }
