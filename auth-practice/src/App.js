@@ -12,6 +12,7 @@ function App() {
   const dispatch = useDispatch();
   // const { id } = useSelector((state) => state.userSlice.value);
   const idLocalStorage = localStorage.getItem("id");
+  console.log(idLocalStorage);
 
   const keepLogin = async () => {
     try {

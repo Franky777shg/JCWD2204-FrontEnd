@@ -8,10 +8,12 @@ import { Navigate } from "react-router-dom";
 const url = "http://localhost:2000/users";
 
 export const LoginPage = () => {
+  // const router = useRouter
   const usernameEmail = useRef("");
   const password = useRef("");
   const dispatch = useDispatch();
   const [move, setMove] = useState(false);
+  console.log(move);
 
   const onLogin = async () => {
     // console.log(usernameEmail.current.value);
@@ -29,10 +31,12 @@ export const LoginPage = () => {
       if (resUsername.data.length !== 0) {
         dispatch(login(resUsername.data[0]));
         localStorage.setItem("id", resUsername.data[0].id);
+        console.log("test");
         setMove(true);
       } else if (resEmail.data.length !== 0) {
         dispatch(login(resEmail.data[0]));
         localStorage.setItem("id", resEmail.data[0].id);
+        console.log("test");
         setMove(true);
       } else {
         alert("Gagal Login");
@@ -43,7 +47,7 @@ export const LoginPage = () => {
   };
 
   return move ? (
-    <Navigate to="/" />
+    <Navigate to="/" replace={true} />
   ) : (
     <Container bg="#179cf0" w="300px" h="350px" mt={20}>
       <Heading mb={10}>Login</Heading>
