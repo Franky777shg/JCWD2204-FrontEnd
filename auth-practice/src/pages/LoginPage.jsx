@@ -28,9 +28,11 @@ export const LoginPage = () => {
 
       if (resUsername.data.length !== 0) {
         dispatch(login(resUsername.data[0]));
+        localStorage.setItem("id", resUsername.data[0].id);
         setMove(true);
       } else if (resEmail.data.length !== 0) {
         dispatch(login(resEmail.data[0]));
+        localStorage.setItem("id", resEmail.data[0].id);
         setMove(true);
       } else {
         alert("Gagal Login");

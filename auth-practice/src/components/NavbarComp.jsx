@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Button, Select } from "@chakra-ui/react";
 import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ export const NavbarComp = () => {
 
   const onLogout = () => {
     dispatch(logout());
+    localStorage.removeItem("id");
   };
 
   return (
@@ -29,7 +30,14 @@ export const NavbarComp = () => {
         <Link to="register">Register</Link>
         <Text>{username}</Text>
       </Box>
-      <Button onClick={onLogout}>Logout</Button>
+      <Button as={Link} to="/login" onClick={onLogout}>
+        Logout
+      </Button>
+      {/* <Select w="10%">
+        <option value="option1">Login</option>
+        <option value="option2">Register</option>
+        <option value="option3">Logout</option>
+      </Select> */}
     </Flex>
   );
 };
