@@ -5,8 +5,11 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "./firebase";
+const provider = new GoogleAuthProvider();
 
 function App() {
   const [user, setUser] = useState({});
@@ -73,7 +76,9 @@ function App() {
         Log Out
       </Button>
       <br />
-      <Button className="mb-3">Login With Google</Button>
+      <Button className="mb-3" onClick={() => signInWithPopup(auth, provider)}>
+        Login With Google
+      </Button>
     </div>
   );
 }
