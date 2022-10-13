@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
+import { getMessaging, getToken } from "firebase/messaging";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,3 +18,30 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+const messaging = getMessaging(app);
+
+function requestPermission() {
+  console.log("Requesting permission...");
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Notification permission granted.");
+
+      getToken(messaging, {
+        vapidKey:
+          "BGjABKzpiYir-uiKB6mXdqk4ZsMtyJXzgAEMgmKa-vr-4j0i4z484908Fag7xwga6nS3KPrJj3-MW7Ks2z7MKjI",
+      }).then((currentToken) => {
+        if (currentToken) {
+          console.log("current token : ", currentToken);
+        } else {
+          console.log(
+            "No registration token available. Request permission to generate one."
+          );
+        }
+      });
+    } else {
+      console.log("Do not have permission!");
+    }
+  });
+}
+
+requestPermission();
