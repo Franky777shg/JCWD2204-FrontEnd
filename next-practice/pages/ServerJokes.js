@@ -3,6 +3,7 @@ export async function getServerSideProps(context) {
     "https://v2.jokeapi.dev/joke/Programming?type=twopart&idRange=0-10&amount=5"
   );
   const { jokes } = await res.json();
+
   return {
     props: { jokes },
   };
