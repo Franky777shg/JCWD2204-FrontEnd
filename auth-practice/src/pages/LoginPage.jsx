@@ -23,10 +23,12 @@ export const LoginPage = () => {
         url +
           `?username=${usernameEmail.current.value}&password=${password.current.value}`
       );
+      // resUsername.data = [{}]
       const resEmail = await Axios.get(
         url +
           `?email=${usernameEmail.current.value}&password=${password.current.value}`
       );
+      // resEmail.data = [{}]
 
       if (resUsername.data.length !== 0) {
         dispatch(login(resUsername.data[0]));
