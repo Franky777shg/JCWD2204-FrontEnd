@@ -25,9 +25,10 @@ export const NavbarComp = () => {
     >
       <FaTwitter style={{ width: "50px", height: "50px" }} />
       <Heading>Authentication</Heading>
-      <Box bg="white" w="200px" display="flex" justifyContent="space-around">
+      <Box bg="white" w="250px" display="flex" justifyContent="space-around">
         <Link to="/login">Login</Link>
         <Link to="register">Register</Link>
+        <Link to="profile">Profile</Link>
         <Text>{username}</Text>
       </Box>
       <Button as={Link} to="/login" onClick={onLogout}>
