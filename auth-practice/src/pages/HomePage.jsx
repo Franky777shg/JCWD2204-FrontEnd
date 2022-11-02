@@ -3,11 +3,11 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const HomePage = () => {
-  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
 
   return (
     <>
-      {!id && <Navigate to="/login" replace={true} />}
+      {!token && <Navigate to="/login" replace={true} />}
       <div>Homepage</div>
     </>
   );

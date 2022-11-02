@@ -3,39 +3,24 @@ import { Formik, ErrorMessage, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Input, FormLabel, Button, Alert, AlertIcon } from "@chakra-ui/react";
 import Axios from "axios";
-const url = "http://localhost:2000/users";
+const url = "http://localhost:2000/users/register";
 
 export const RegisterPage = () => {
   const [show, setShow] = useState(false);
 
   const registerSchema = Yup.object().shape({
-    password: Yup.string().required().min(8, "Password min 8 Character"),
+    // password: Yup.string().required().min(8, "Password min 8 Character"),
   });
 
   const onRegister = async (data) => {
     try {
-      const users = await Axios.get(url);
-      const listUsername = users.data.map((item) => item.username);
-      const listEmail = users.data.map((item) => item.email);
-
-      if (!listEmail.includes(data.email)) {
-        if (!listUsername.includes(data.username)) {
-          if (data.password === data.confirmPassword) {
-            delete data.confirmPassword;
-            //   console.log(data);
-            await Axios.post(url, data);
-            setShow(true);
-          } else {
-            alert("Confirm Password doesn't match with password");
-          }
-        } else {
-          alert("Username already exist");
-        }
-      } else {
-        alert("Email already exist");
-      }
+      console.log(data);
+      const result = await Axios.post(url, data);
+      console.log(result);
+      alert(result.data);
     } catch (err) {
       console.log(err);
+      alert(err.response.data);
     }
   };
 
@@ -56,14 +41,16 @@ export const RegisterPage = () => {
           username: "",
           email: "",
           confirmPassword: "",
+          phoneNumber: "",
         }}
         validationSchema={registerSchema}
         onSubmit={(values, action) => {
           onRegister(values);
-          action.setFieldValue("username", "");
-          action.setFieldValue("password", "");
-          action.setFieldValue("email", "");
-          action.setFieldValue("confirmPassword", "");
+          // action.setFieldValue("username", "");
+          // action.setFieldValue("password", "");
+          // action.setFieldValue("email", "");
+          // action.setFieldValue("confirmPassword", "");
+          // action.setFieldValue("phoneNumber", "");
         }}
       >
         {(props) => {
@@ -76,6 +63,8 @@ export const RegisterPage = () => {
                 <Input as={Field} name="username" />
                 <FormLabel>Email</FormLabel>
                 <Input as={Field} name="email" />
+                <FormLabel>Phone Number</FormLabel>
+                <Input as={Field} name="phoneNumber" />
                 <FormLabel>Password</FormLabel>
                 <Input as={Field} name="password" />
                 <ErrorMessage

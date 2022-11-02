@@ -11,14 +11,17 @@ import { useEffect } from "react";
 function App() {
   const dispatch = useDispatch();
   // const { id } = useSelector((state) => state.userSlice.value);
-  const idLocalStorage = localStorage.getItem("id");
-  console.log(idLocalStorage);
+  const token = localStorage.getItem("token");
+  console.log(token);
 
   const keepLogin = async () => {
     try {
-      const res = await Axios.get(
-        `http://localhost:2000/users/${idLocalStorage}`
-      );
+      const res = await Axios.get(`http://localhost:2000/users/keepLogin`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(res.data);
       dispatch(login(res.data));
     } catch (err) {
       console.log(err);

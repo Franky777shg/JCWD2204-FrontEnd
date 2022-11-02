@@ -11,7 +11,7 @@ export const NavbarComp = () => {
 
   const onLogout = () => {
     dispatch(logout());
-    localStorage.removeItem("id");
+    localStorage.removeItem("token");
   };
 
   return (
