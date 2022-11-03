@@ -3,6 +3,7 @@ import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { VerificationPage } from "./pages/VerificationPage";
 import { NavbarComp } from "./components/NavbarComp";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +42,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/verification/:token" element={<VerificationPage />} />
       </Routes>
     </div>
   );
